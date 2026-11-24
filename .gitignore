@@ -1,0 +1,20 @@
+# Sistem operasi
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.sublime-*
+
+# Backup/arsip lokal
+*.zip
+*.rar
+*.bak
+
+# Folder arsip versi lama (opsional: hapus baris ini kalau mau ikut di-commit)
+legacy/
+
+# Netlify (kalau nanti deploy pakai Netlify CLI)
+.netlify/

@@ -1,0 +1,60 @@
+/* =====================================================================
+   summary.css — kartu ringkasan: tab, periode, donut chart, daftar kategori
+   Logika ada di js/summary.js
+   ===================================================================== */
+
+.sumh{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+/* periode punya 5 pilihan: rapatkan teks agar tetap muat satu baris di HP */
+#per button{padding-left:1px;padding-right:1px;white-space:nowrap;font-size:clamp(10px,3.05vw,14px)}
+.sumb{display:grid;gap:22px;align-items:center;justify-items:center}
+
+/* donut + legenda berdampingan */
+.dwrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:10px;width:100%}
+.legend{display:flex;flex-direction:column;gap:6px;min-width:0;justify-self:start}
+.lgi{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--ink);background:none;border:0;padding:3px 6px;border-radius:9px;cursor:pointer;text-align:left;transition:background 160ms ease,opacity 160ms ease;min-width:0}
+.lgi:hover{background:var(--fld)}
+.lgi.dim{opacity:.35}
+.lgi i{width:13px;height:13px;border-radius:5px;flex:none;box-shadow:inset 0 -1px 0 rgba(0,0,0,.15)}
+.lgi span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lgi b{margin-left:auto;color:var(--mut);font-variant-numeric:tabular-nums;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+
+/* kotak ring "Uang bulanan": ring kecil + info singkat */
+.mbox{display:grid;gap:10px;justify-items:center}
+.ring.sm{width:min(280px,78vw)}
+/* warna lebih lembut: lintasan pudar, isian hijau sage nyaman di mata */
+.ring.sm .trk{stroke:rgba(60,45,25,.05)}
+.mcl{font-size:17px}
+.mbox .cv{font-size:clamp(24px,5.4vw,32px);font-variant-numeric:tabular-nums}
+/* keterangan sisa uang bulanan: pil kecil lembut agar angka total menonjol */
+.mbox .cs{background:var(--fld);border-radius:999px;padding:4px 12px;font-size:12px;line-height:1.4;min-height:0;transition:color 200ms ease,background 200ms ease}
+.mbox .cs.warn{color:#8a5b00;background:rgba(230,164,22,.16)}
+.mbox .cs.habis{color:var(--out);background:rgba(178,58,44,.12)}
+
+/* segmented control (dipakai juga di form) */
+.seg{position:relative;display:grid;grid-template-columns:repeat(var(--n),1fr);background:var(--fld);border-radius:14px;padding:4px}
+.seg::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/var(--n));background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.2);transform:translateX(calc(var(--i,0)*100%));transition:transform 220ms var(--io)}
+.seg button{position:relative;border:0;background:none;padding:10px 6px;font-weight:800;font-size:14px;color:var(--mut);cursor:pointer;transition:color 160ms ease}
+.seg button.on{color:var(--ink)}
+
+/* donut ring */
+.ring{position:relative;width:min(100%,320px);aspect-ratio:1;margin:0 auto}
+.ring svg{width:100%;height:100%;display:block;transform:rotate(-90deg)}
+.trk{fill:none;stroke:var(--fld);stroke-width:18}
+.sg{fill:none;stroke-width:18;cursor:pointer;transition:stroke-dasharray 420ms var(--ease),stroke-dashoffset 420ms var(--ease),stroke-width 160ms var(--ease),opacity 160ms ease,stroke 200ms ease}
+.sg.on{stroke-width:24}.sg.dim{opacity:.25}
+
+/* teks di tengah ring */
+.ctr{position:absolute;inset:19%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;gap:1px}
+.ci{height:24px;display:grid;place-items:center}
+.cl{font-family:var(--hand);font-size:22px;font-weight:700;color:var(--mut);line-height:1}
+.cv{font-size:clamp(21px,6vw,27px);font-weight:800;letter-spacing:-.02em;line-height:1.15;max-width:100%}
+.cs{font-size:13px;color:var(--mut);font-weight:700;min-height:20px}
+
+/* daftar kategori sudah dihapus — rincian cukup di kartu "Rincian pengeluaran" */
+
+/* ikon kategori + teks (dipakai juga di riwayat & anggaran) */
+.ic{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none;color:#fff;background:var(--c);box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.mid{flex:1;min-width:0;display:flex;flex-direction:column}.rt{display:flex;flex-direction:column;align-items:flex-end}
+.nm{font-weight:800;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb,.pc{font-size:13px;color:var(--mut);font-weight:700;line-height:1.3}.am{font-weight:800}
+.empty{color:var(--mut);text-align:center;padding:26px 8px;font-weight:700;line-height:1.5}

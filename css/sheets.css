@@ -1,0 +1,14 @@
+/* =====================================================================
+   sheets.css — "kertas" dasar + selotip
+   Dipakai oleh semua section: .sum .frm .bud .his
+   Warna kertas diatur per section lewat variabel --pp / --fc.
+   ===================================================================== */
+
+.sheet{position:relative;isolation:isolate;padding:20px 16px}
+.sheet::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--pp,rgba(255,255,255,.64)),var(--pp,rgba(255,255,255,.64))),var(--tex);background-size:auto,500px;filter:url(#torn) drop-shadow(0 1px 1px rgba(70,50,20,.25)) drop-shadow(0 9px 12px rgba(70,50,20,.13))}
+
+/* selotip dekoratif di sudut kertas */
+.tape{position:absolute;z-index:2;width:104px;height:28px;pointer-events:none;opacity:.9;background-color:var(--tc,#f0b429);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.2) 0 6px,transparent 6px 12px);clip-path:polygon(3% 0,97% 0,100% 15%,97% 30%,100% 45%,97% 60%,100% 75%,97% 90%,100% 100%,3% 100%,0 85%,3% 70%,0 55%,3% 40%,0 25%,3% 10%)}
+.t1{top:-13px;left:50%;margin-left:-52px;transform:rotate(-2deg);background-color:var(--fc,#f0b429);transition:background-color 260ms ease}
+.t2{top:-10px;left:-18px;transform:rotate(-32deg);--tc:#58bd77}
+.t3{top:-12px;right:-14px;transform:rotate(28deg);--tc:#e8704f}

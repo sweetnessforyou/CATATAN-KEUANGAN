@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#ececea">
+<title>Catatan Keuangan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@500;600;700;800&display=swap">
+
+<!-- Gaya: urutan pemuatan penting (base -> motion). -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/decor.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/sheets.css">
+<link rel="stylesheet" href="css/summary.css">
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/budget.css">
+<link rel="stylesheet" href="css/history.css">
+<link rel="stylesheet" href="css/phone.css">
+<link rel="stylesheet" href="css/slides.css">
+<link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+
+<!-- ================= ASET SVG (filter + simbol dekorasi) ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="torn" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
+<g id="coin"><path d="M-20 0v7a20 6.5 0 0 0 40 0V0z" fill="#d79a14"/><ellipse rx="20" ry="6.5" fill="#f7c948" stroke="#b97b0b" stroke-width="1.4"/><ellipse rx="12" ry="3.6" fill="none" stroke="#dba21b" stroke-width="1.4"/></g>
+<g id="bag"><path d="M-14-22C-40 6-40 34-26 44 -12 52 12 52 26 44 40 34 40 6 14-22z" fill="#c4512d" stroke="#80290f" stroke-width="2.5" stroke-linejoin="round"/><path d="M-15-22Q0-14 15-22L12-30Q0-24-12-30z" fill="#a5421f" stroke="#80290f" stroke-width="2.5" stroke-linejoin="round"/><path d="M-12-30Q-18-44-6-42 0-52 6-42 18-44 12-30z" fill="#c4512d" stroke="#80290f" stroke-width="2.5" stroke-linejoin="round"/><text y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="22" fill="#ffd98a">Rp</text></g>
+<g id="bill"><rect x="-42" y="-22" width="84" height="44" rx="4" fill="#a9c39c" stroke="#587a50" stroke-width="2"/><rect x="-36" y="-16" width="72" height="32" rx="2" fill="none" stroke="#587a50"/><circle r="11" fill="#d6e8cc" stroke="#587a50" stroke-width="1.5"/><text y="4" text-anchor="middle" font-size="10" font-weight="800" font-family="Nunito,sans-serif" fill="#3f5f3a">Rp</text><path d="M-30-8h12M-30-3h8M18 8h12M22 13h8" stroke="#587a50" stroke-width="1.5" stroke-linecap="round"/></g>
+<g id="arrow" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-36 14-14-8-2 4 30-26M12-30h22v22" stroke="#176b2c" stroke-width="13"/><path d="M-36 14-14-8-2 4 30-26M12-30h22v22" stroke="#3aa957" stroke-width="8"/></g>
+</defs></svg>
+
+<!-- ================= BINGKAI HP (lihat css/phone.css; di HP asli otomatis hilang) ================= -->
+<div class="phone">
+<div class="screen">
+
+<!-- ================= HIASAN LATAR (lihat css/decor.css) ================= -->
+<div class="deco letter" aria-hidden="true"></div>
+<svg class="deco dc" id="dA" style="--d:0" viewBox="0 0 150 130" aria-hidden="true"><use href="#bill" transform="translate(88 112) rotate(-16) scale(.8)" style="filter:hue-rotate(-75deg) saturate(1.5)"/><use href="#coin" x="36" y="108"/><use href="#coin" x="36" y="101"/><use href="#coin" x="36" y="94"/><use href="#coin" x="36" y="87"/><use href="#bag" transform="translate(96 60) scale(.55)"/><use href="#arrow" transform="translate(46 34) scale(.7)"/></svg>
+<svg class="deco dc" id="dB" style="--d:1" viewBox="0 0 230 130" aria-hidden="true"><use href="#coin" x="38" y="118"/><use href="#coin" x="38" y="111"/><use href="#bag" transform="translate(100 80)"/><use href="#coin" x="160" y="120"/><use href="#coin" x="160" y="113"/><use href="#coin" x="160" y="106"/><use href="#arrow" transform="translate(178 56) scale(1.1)"/></svg>
+<svg class="deco dc" id="dC" style="--d:2" viewBox="0 0 170 120" aria-hidden="true"><use href="#bill" transform="translate(88 38) rotate(-30)"/><use href="#bill" transform="translate(96 54) rotate(-10)"/><use href="#bill" transform="translate(98 72) rotate(12)"/></svg>
+<svg class="deco dc" id="dD" style="--d:3" viewBox="0 0 76 102" aria-hidden="true"><rect x="2" y="2" width="70" height="96" rx="9" fill="#3f6fb5" stroke="#233f75" stroke-width="3"/><rect x="10" y="10" width="54" height="20" rx="4" fill="#cfe3f5" stroke="#233f75" stroke-width="2"/><path fill="#eaf1fb" d="M11 40h14v11H11zM29 40h14v11H29zM11 55h14v11H11zM29 55h14v11H29zM11 70h14v11H11zM29 70h14v11H29zM11 85h14v8H11zM29 85h14v8H29z"/><path fill="#f08a2e" d="M47 40h16v11H47zM47 55h16v11H47zM47 70h16v23H47z"/></svg>
+<svg class="deco dc" id="dE" style="--d:4" viewBox="0 0 180 120" aria-hidden="true"><use href="#bill" transform="translate(40 96) rotate(-12) scale(.8)"/><g transform="translate(78 4)"><rect y="8" width="70" height="92" rx="6" fill="#b9844c" stroke="#7a5128" stroke-width="3"/><rect x="22" width="26" height="16" rx="4" fill="#9aa3ad" stroke="#5a6470" stroke-width="2.5"/><rect x="8" y="20" width="54" height="74" rx="3" fill="#fff" stroke="#ccc"/><path d="M14 30h32M14 38h20" stroke="#bbb" stroke-width="2.5"/><rect x="14" y="62" width="9" height="26" fill="#3aa957"/><rect x="27" y="48" width="9" height="40" fill="#3f6fb5"/><rect x="40" y="36" width="9" height="52" fill="#f08a2e"/></g><use href="#bag" transform="translate(150 84) scale(.5)"/></svg>
+<svg class="deco dc" id="dF" style="--d:5" viewBox="0 0 120 70" aria-hidden="true"><use href="#coin" x="30" y="60"/><use href="#coin" x="30" y="53"/><use href="#coin" x="30" y="46"/><use href="#coin" x="30" y="39"/><use href="#coin" x="72" y="60"/><use href="#coin" x="72" y="53"/><use href="#coin" x="96" y="62"/></svg>
+
+<main>
+
+<!-- ================= HEADER + NAVIGASI BULAN (css/layout.css) ================= -->
+<header class="top">
+  <div class="brandwrap">
+    <button class="ib burger" id="burger" aria-label="Buka menu bagian" aria-expanded="false" aria-controls="mmenu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <div class="brand"><span class="st" id="st"></span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="4" aria-hidden="true"><g transform="rotate(-90 12 12)"><circle cx="12" cy="12" r="8" stroke="#d9532f" stroke-dasharray="11 39.3"/><circle cx="12" cy="12" r="8" stroke="#3b78c2" stroke-dasharray="11 39.3" stroke-dashoffset="-12.6"/><circle cx="12" cy="12" r="8" stroke="#3f9d55" stroke-dasharray="11 39.3" stroke-dashoffset="-25.1"/><circle cx="12" cy="12" r="8" stroke="#e6a416" stroke-dasharray="11 39.3" stroke-dashoffset="-37.7"/></g></svg>Catatan Keuangan</div>
+    <nav class="mmenu" id="mmenu" hidden aria-label="Menu bagian">
+      <button type="button" data-go="s2">✏️ Catat transaksi</button>
+      <button type="button" data-go="s3">📝 Rincian &amp; riwayat</button>
+    </nav>
+  </div>
+  <div class="mnav"><button class="ib" id="pv" aria-label="Bulan sebelumnya"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button><b id="ml"></b><button class="ib" id="nx" aria-label="Bulan berikutnya"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+</header>
+
+<div class="grid">
+
+  <!-- SECTION 1 (tampilan awal): saldo s.d. uang bulanan -->
+  <section class="slide on" id="s1">
+
+  <!-- SALDO + PILL TOTAL -->
+  <section class="bal"><div><small>Saldo</small><div class="big" id="bal">Rp0</div></div>
+    <div class="bstwrap">
+      <div class="bst"><div class="pill in"><small>Pemasukan</small><b id="sin">Rp0</b></div><div class="pill out"><small>Pengeluaran</small><b id="sout">Rp0</b></div><div class="pill sav"><small>Total tabungan</small><b id="stav">Rp0</b></div></div>
+    </div></section>
+
+  <!-- RINGKASAN: ring kategori + daftar (js/summary.js) -->
+  <section class="sheet sum"><i class="tape t1"></i>
+    <div class="sumh">
+      <div class="seg" id="tabs" style="--n:2"><button data-v="out" class="on">Pengeluaran</button><button data-v="in">Pemasukan</button></div>
+      <div class="seg" id="per" style="--n:5;--i:3"><button data-v="1mgg">1 minggu</button><button data-v="2mgg">2 minggu</button><button data-v="3mgg">3 minggu</button><button data-v="bulan" class="on">1 bulan</button><button data-v="tahun">Tahun</button></div>
+    </div>
+    <div class="sumb">
+      <div class="dwrap">
+        <div class="ring"><svg id="rs" viewBox="0 0 200 200" aria-hidden="true"></svg>
+          <div class="ctr" aria-live="polite"><span class="ci" id="cI"></span><span class="cl" id="cL"></span><b class="cv" id="cV"></b><span class="cs" id="cS"></span></div></div>
+        <div class="legend" id="lg"></div>
+      </div>
+      <div class="mbox">
+        <div class="ring sm"><svg id="rm" viewBox="0 0 200 200" aria-hidden="true"></svg>
+          <div class="ctr"><span class="cl mcl">Uang bulanan</span><b class="cv" id="mV"></b><span class="cs" id="mS"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Menu bagian sekarang lewat tombol garis tiga (#burger) di header (js/slides.js) -->
+  </section>
+
+  <!-- SECTION 2: catat transaksi (js/form.js) -->
+  <section class="slide" id="s2" hidden>
+  <section class="sheet frm"><i class="tape t2"></i><h2>Catat transaksi</h2>
+    <div class="fcols">
+      <form id="f">
+        <h3 class="fh fo">Pengeluaran</h3>
+        <label class="amt"><span>Rp</span><input id="amt" type="text" inputmode="numeric" maxlength="19" placeholder="0" required aria-label="Jumlah pengeluaran" autocomplete="off"></label>
+        <div class="cats" id="cats" role="group" aria-label="Kategori pengeluaran"></div>
+        <div class="two"><input id="dt" type="date" required aria-label="Tanggal pengeluaran"><input id="note" placeholder="Catatan (opsional)" maxlength="120" aria-label="Catatan"></div>
+        <button class="btn" id="sv" type="submit">Simpan pengeluaran</button>
+      </form>
+      <form id="fi">
+        <h3 class="fh fi2">Pemasukan</h3>
+        <label class="amt"><span>Rp</span><input id="amti" type="text" inputmode="numeric" maxlength="19" placeholder="0" required aria-label="Jumlah pemasukan" autocomplete="off"></label>
+        <div class="cats" id="catsi" role="group" aria-label="Kategori pemasukan"></div>
+        <div class="two"><input id="dti" type="date" required aria-label="Tanggal pemasukan"><input id="notei" placeholder="Catatan (opsional)" maxlength="120" aria-label="Catatan"></div>
+        <button class="btn bi" id="svi" type="submit">Simpan pemasukan</button>
+      </form>
+    </div>
+  </section>
+  </section>
+
+  <!-- SECTION 3: rincian pengeluaran s.d. riwayat -->
+  <section class="slide" id="s3" hidden>
+
+  <!-- RINCIAN PENGELUARAN (js/budget.js) -->
+  <section class="sheet bud"><i class="tape t3"></i><h2>Rincian pengeluaran</h2><p class="sub" id="bsub"></p><div id="buds"></div></section>
+
+  <!-- RIWAYAT (js/history.js) -->
+  <section class="his"><div class="rc"><div class="hh"><h2>Riwayat</h2><button class="flt" id="flt" hidden></button></div><div id="list"></div></div></section>
+  </section>
+</div>
+</main>
+
+<!-- status bar + pulau + garis rumah (hiasan bingkai HP) -->
+<div class="sbar" aria-hidden="true"><span id="clk">09:41</span><span><svg width="17" height="12" viewBox="0 0 17 12"><g fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></g></svg><svg width="16" height="12" viewBox="0 0 16 12" style="margin-left:4px"><path d="M1.1 4.3a9 9 0 0 1 13.8 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 7a5.6 5.6 0 0 1 9 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="10.2" r="1.5" fill="currentColor"/></svg><svg width="25" height="12" viewBox="0 0 25 12" style="margin-left:4px"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="18" height="8" rx="2" fill="currentColor"/><path d="M23 4v4a2 2 0 0 0 0-4Z" fill="currentColor" opacity=".4"/></svg></span></div>
+<div class="notch" aria-hidden="true"></div>
+<div class="hbar" aria-hidden="true"></div>
+
+</div><!-- /screen -->
+</div><!-- /phone -->
+
+<!-- ================= SCRIPT: urutan pemuatan WAJIB seperti ini ================= -->
+<script src="js/categories.js"></script><!-- kategori, warna, ikon -->
+<script src="js/utils.js"></script>     <!-- helper format & DOM -->
+<script src="js/state.js"></script>     <!-- state global K.s -->
+<script src="js/storage.js"></script>   <!-- simpan/baca data -->
+<script src="js/phone.js"></script>     <!-- jam status bar bingkai HP -->
+<script src="js/summary.js"></script>   <!-- ringkasan + ring -->
+<script src="js/budget.js"></script>    <!-- anggaran -->
+<script src="js/history.js"></script>   <!-- riwayat -->
+<script src="js/form.js"></script>      <!-- form transaksi -->
+<script src="js/slides.js"></script>    <!-- navigasi 3 section -->
+<script src="js/app.js"></script>       <!-- render + start -->
+</body>
+</html>

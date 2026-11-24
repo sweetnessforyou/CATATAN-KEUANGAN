@@ -1,0 +1,13 @@
+/* =====================================================================
+   decor.css — hiasan latar (surat, uang, koin, kalkulator)
+   Semua elemen ini <svg>/div dekoratif di dalam index.html (id #dA–#dF).
+   ===================================================================== */
+
+.deco{position:absolute;pointer-events:none;z-index:0}
+.dc{animation:drop 520ms var(--ease) both;animation-delay:calc(var(--d)*70ms)}
+@keyframes drop{from{opacity:0;transform:translateY(-10px)}}
+.letter,#dA,#dB,#dC,#dD,#dE,#dF{display:none}
+
+/* animasi "goyang" saat transaksi baru disimpan (dipicu dari js/form.js) */
+#dB.pop{animation:wig 480ms var(--ease)}
+@keyframes wig{20%{transform:rotate(-5deg) translateY(-6px)}55%{transform:rotate(3deg)}100%{transform:none}}
