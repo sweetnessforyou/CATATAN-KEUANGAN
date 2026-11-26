@@ -1,0 +1,35 @@
+/* =====================================================================
+   history.css — kartu "Riwayat" berbentuk struk kasir
+   Logika ada di js/history.js
+   ===================================================================== */
+
+/* layer komposit sendiri: filter + mask struk dirasterisasi sekali,
+   digulirkan sebagai tekstur (scroll halus, lihat catatan sheets.css) */
+.his{filter:drop-shadow(0 1px 1px rgba(70,50,20,.25)) drop-shadow(0 9px 12px rgba(70,50,20,.13));will-change:transform}
+
+/* tepi bawah struk bergerigi */
+.rc{padding:20px 16px 30px;background:linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)),var(--tex);background-size:auto,500px;-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;mask:linear-gradient(#000,#000) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x}
+
+.hh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.hh h2{margin:0}
+
+/* tombol filter kategori aktif */
+.flt{display:inline-flex;align-items:center;gap:6px;border:0;background:var(--chip);border-radius:99px;padding:5px 10px 5px 12px;font-size:13px;font-weight:800;cursor:pointer;transition:transform 160ms var(--ease)}
+.flt:active{transform:scale(.96)}
+
+/* satu baris transaksi; max-height ikut dianimasikan agar baris di bawahnya
+   naik mulus saat baris dihapus (tinggi awal diatur js/history.js) */
+.h{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1.5px dashed var(--line);overflow:hidden;transition:opacity 160ms var(--ease),transform 160ms var(--ease),max-height 240ms var(--ease),padding 240ms var(--ease)}
+.h:first-child{border-top:0}
+.h.gone{opacity:0;transform:translateX(12px);max-height:0!important;padding-top:0;padding-bottom:0;border-top-color:transparent}.h.new{animation:up 300ms var(--ease) both}
+.h .am.in{color:var(--in)}.am{white-space:nowrap;flex:none}
+.x{flex:none}
+.tg{margin-left:6px;background:rgba(26,158,143,.18);color:#0c6f64;border-radius:99px;padding:1px 7px;font-size:11px;font-weight:800;white-space:nowrap}
+.tg.b{background:rgba(217,146,26,.18);color:#8a5a10}
+
+/* tombol hapus */
+.x{border:0;background:none;color:var(--mut);width:30px;height:30px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:transform 160ms var(--ease),background-color 160ms ease,color 160ms ease}
+.x:active{transform:scale(.9)}
+@media (hover:hover) and (pointer:fine){.x:hover{background:var(--chip);color:var(--out)}}
+
+/* catatan status di bawah semua kartu */
+.note{font-family:var(--hand);font-size:20px;font-weight:600;color:var(--mut);line-height:1.35;text-align:center;margin:34px 0 0;position:relative;z-index:1}

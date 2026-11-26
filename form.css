@@ -1,0 +1,52 @@
+/* =====================================================================
+   form.css — kartu "Catat transaksi" (kertas catatan kuning)
+   Logika ada di js/form.js
+   ===================================================================== */
+
+.frm{--pp:rgba(255,226,100,.86);--fld:rgba(60,45,25,.1);--chip:rgba(255,255,255,.62);--mut:#5e5320}
+
+/* tombol Kembali di atas kartu: beri jarak agar tidak tertutup selotip t2 */
+#s2 > .back{margin-bottom:36px}
+
+/* dua kolom form selalu bertumpuk, seperti layar HP */
+.fcols{display:grid;gap:20px}
+form{display:grid;gap:14px;align-content:start}
+
+/* judul tiap kolom + tanggal hari ini yang terus diperbarui */
+.fh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-family:var(--hand);font-size:22px;font-weight:700;line-height:1;margin:0 0 2px}
+.fh::before{content:"";width:10px;height:10px;border-radius:50%;align-self:center}
+.fh.fo{color:var(--out)}.fh.fo::before{background:var(--out)}
+.fh.fi2{color:var(--in)}.fh.fi2::before{background:var(--in)}
+
+/* tombol simpan pemasukan memakai warna pemasukan */
+.btn.bi{background:#2f7d3f}
+.amt{display:flex;align-items:baseline;gap:8px;border-bottom:2.5px solid var(--line);padding-bottom:6px;transition:border-color 160ms ease}
+.amt:focus-within{border-color:var(--ink)}
+.amt span{font-size:20px;font-weight:800}
+.amt input{border:0;background:none;font:inherit;font-size:clamp(22px,7vw,30px);font-weight:800;color:var(--ink);width:100%;padding:0;outline:0;letter-spacing:-.02em;min-width:0}
+.amt input::placeholder{color:var(--mut);opacity:.55}
+
+/* chip kategori */
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cat{display:inline-flex;align-items:center;gap:6px;border:0;background:var(--chip);border-radius:99px;padding:8px 14px 8px 11px;font-size:13px;font-weight:800;cursor:pointer;transition:background-color 160ms ease,color 160ms ease,transform 160ms var(--ease)}
+.cat:active{transform:scale(.96)}
+.cat[aria-pressed="true"]{background:var(--ink);color:#fff6cf}
+
+/* kolom form cukup sempit: tanggal & catatan ditumpuk agar tetap terbaca */
+.two{display:grid;gap:8px}
+input[type=date],#note,#notei{font:inherit;font-size:16px;font-weight:600;color:var(--ink);background:var(--chip);border:0;border-radius:12px;padding:11px 13px;width:100%;min-width:0;outline:0;box-shadow:inset 0 0 0 2px transparent;transition:box-shadow 160ms ease}
+input[type=date]:focus,#note:focus,#notei:focus{box-shadow:inset 0 0 0 2px var(--ink)}
+#note::placeholder,#notei::placeholder{color:var(--mut);opacity:.7}
+
+/* lapangan catatan: kertas bertanda garis + ikon pensil samar (pengeluaran & pemasukan) */
+#note,#notei{padding:12px 40px 12px 14px;line-height:1.35;background:var(--chip) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='19' viewBox='0 0 24 24' fill='none' stroke='%235e5320' stroke-opacity='.5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E") no-repeat right 13px center}
+#note::placeholder,#notei::placeholder{font-weight:500;font-style:italic}
+@media (hover:hover) and (pointer:fine){#note:hover,#notei:hover{box-shadow:inset 0 0 0 2px rgba(94,83,32,.35)}}
+
+.btn{border:0;border-radius:14px;padding:15px;font-weight:800;font-size:16px;color:#fff;background:#1f8a4c;box-shadow:inset 0 -3px 0 rgba(0,0,0,.2);cursor:pointer;transition:transform 160ms var(--ease),filter 160ms ease}
+.btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.08)}}
+
+/* saldo tabungan yang selalu tampil di kartu transaksi (pengeluaran & pemasukan) */
+
+/* sumber dana pengeluaran (uang pemasukan / uang tabungan) */

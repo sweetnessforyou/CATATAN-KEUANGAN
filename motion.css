@@ -1,0 +1,37 @@
+/* =====================================================================
+   motion.css — aturan aksesibilitas gerak (WAJIB dimuat paling akhir)
+   Mematikan animasi untuk pengguna yang memilih "reduce motion".
+   ===================================================================== */
+
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+
+/* animasi masuk saat halaman dibuka: kartu muncul berurutan, header tetap instan */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.bal,.sum,.frm,.bud,.his{animation:rise 420ms var(--ease) both}
+.sum{animation-delay:60ms}
+.frm{animation-delay:120ms}
+.bud{animation-delay:180ms}
+.his{animation-delay:240ms}
+/* section 2 & 3 dibuka manual dari menu: kartu naik berurutan sesuai delay
+   di atas (display:none → terlihat memicu ulang animasi kartu), tombol
+   kembali tampil instan seperti header */
+.back{animation:rise 300ms var(--ease) both}
+
+/* saat pindah section: section lama meluncur keluar ke atas (dipicu
+   js/slides.js lewat kelas .leave, baru section baru ditampilkan).
+   Kurva ease-in agar kecepatan keluar terasa mengunci, bukan tersendat */
+@keyframes fall{to{opacity:0;transform:translateY(-14px)}}
+.slide.leave{animation:fall 190ms cubic-bezier(.45,.05,.65,.3) both;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  .dc,.frm.pop,.mmenu{animation:none}
+  .h.new{animation:fade 200ms ease both}
+  .h{transition:none}
+  .seg::before,.track div,.sg{transition:none}
+  .ib,.back,.x,.cat,.btn,.flt{transition:none}
+  .bal,.sum,.frm,.bud,.his{animation:fade 200ms ease both;animation-delay:0ms}
+  .back{animation:fade 200ms ease both}
+  .slide.leave{animation:fade 120ms ease both}
+  .h.gone{transition:none}
+  @keyframes fade{from{opacity:0}}
+}
