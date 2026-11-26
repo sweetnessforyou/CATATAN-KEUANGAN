@@ -1,7 +1,9 @@
 /* Service Worker — Catatan Keuangan (PWA offline) */
 (function () {
   'use strict';
-  var CACHE = 'keuangan-v1';
+  /* Naikkan versi ini SETIAP KALI file aplikasi berubah, jika tidak
+     pengguna PWA akan terus menerima aset lama (cache-first). */
+  var CACHE = 'keuangan-v2';
   var ASSETS = [
     './',
     './index.html',
